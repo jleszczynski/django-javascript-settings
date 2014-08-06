@@ -23,9 +23,12 @@ class ConfigurationBuilder:
                 pass
         return configuration
 
-    def get_configuration(self):
+    def get_configuration(self, **kwargs):
         if self.configuration is None:
             self.configuration = self.fetch()
+
+        self.configuration.update(kwargs)
+
         return self.configuration
 
 DEFAULT_CONFIGURATION_BUILDER = ConfigurationBuilder()
